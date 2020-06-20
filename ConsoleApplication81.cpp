@@ -119,9 +119,15 @@ double getaveragelength(vector<record> const& v)
     return sum / v.size();
 }
 
-int main()
+int main(int argc, char** argv)
 {
-    fstream fin("input.csv");
+    if (argc != 2)
+    {
+        cerr << "Error" << endl;
+        return 2;
+    }
+
+    fstream fin(argv[1]);
     auto v = get_car_records(fin);
     auto [a, b] = getoldestandnewest(v);
     cout << "Oldest: " << endl;
